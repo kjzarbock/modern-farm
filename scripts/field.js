@@ -1,15 +1,26 @@
-// Define an empty array to store the plants
-const plants = [];
+let fieldPlants = [];
 
-// Define and export the addPlant function
+export const addPlant = (seed) => {
+  fieldPlants.push(seed);
+};
+
+export const usePlants = () => {
+  const plantCopy = [...fieldPlants];
+  const isCorn = plantCopy.some((plant) => Array.isArray(plant));
+  if (isCorn) {
+    return plantCopy.flat();
+  }
+  return plantCopy;
+};
+
+/*const plants = [];
 export const addPlant = (seed) => {
   plants.push(seed);
 };
 
-// Define and export the usePlants function
 export const usePlants = () => {
-  return [...plants]; // Return a copy of the array of plants using the spread syntax
-};
+  return [...plants]; 
+};*/
 
 /*//Define and export a function called addPlant that will receive a seed object as input.
 export const addPlant = (seed) => {

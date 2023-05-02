@@ -1,4 +1,4 @@
-export const createCorn = (type, height, output) => {
+export const createCorn = () => {
     const cornObject = {
       type: 'corn',
       height: 180, 

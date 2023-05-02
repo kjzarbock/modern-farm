@@ -1,21 +1,28 @@
-import { usePlants } from "./field.js";
 
-//In this module, define and export a harvestPlants function.
-export const harvestPlants = () => {
-//The harvestPlants function must accept the plants array as input.
-    let plants = usePlants();
-//The function will return an array of seed objects.
-    let seedObjects = [];
-//Iterate the array of growing plants. On each plant, get the value of the output property.
+// Define a function to harvest plants
+export const harvestPlants = (plants) => {
+    // Create an empty array to store the harvested plants
+    let harvestedPlants = [];
+  
+    // Iterate the array of plants
     for (const plant of plants) {
-//Add that many of the plant objects to the array that the function returns. For example, if the current plant is a peanut object with an output of 2...
-        if (plant.type === "Corn") {
-            for (let i = 0; i < plant.output / 2; i++) {
-                seedObjects.push(plant);
-            }
-        } else {
-            for (let i = 0; i < plant.output; i++) {
-                seedObjects.push(plant);
-            }
-//Again, the exception is corn. Half of your corn will be sold to cattle ranchers, so only half of the output of each corn plant will be added to the array that this function returns.
-        }
+      // Get the output of the plant
+      let output = plant.output;
+  
+      // If the plant is corn, only half of the output will be harvested
+      if (plant.type === "corn") {
+        output /= 2;
+      }
+  
+      // Add the plant to the array of harvested plants
+      for (let i = 0; i < output; i++) {
+        harvestedPlants.push(plant);
+      }
+    }
+  
+    // Return the array of harvested plants
+    return harvestedPlants;
+  };
+  
+
+  
